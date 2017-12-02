@@ -5,6 +5,9 @@ extern crate structopt_derive;
 use structopt::StructOpt;
 use std::path::Path;
 
+mod days;
+use days::*;
+
 #[derive(StructOpt, Debug)]
 #[structopt(name = "adventofcode", about = "Advent of Code in Rust", author = "Jokler")]
 struct Opt {
@@ -32,6 +35,7 @@ fn main() {
     };
 
     let output = match opt.day {
+        1 => one::run(&input, opt.puzzle),
         _ => String::from(format!("There is no code for day {}.", opt.day))
     };
 
