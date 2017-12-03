@@ -1,6 +1,7 @@
 extern crate structopt;
 #[macro_use]
 extern crate structopt_derive;
+extern crate itertools;
 
 use structopt::StructOpt;
 use std::path::Path;
@@ -36,6 +37,7 @@ fn main() {
 
     let output = match opt.day {
         1 => one::run(&input, opt.puzzle),
+        2 => two::run(&input, opt.puzzle),
         _ => String::from(format!("There is no code for day {}.", opt.day))
     };
 

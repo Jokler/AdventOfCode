@@ -6,3 +6,4 @@ authors = ["Jokler <jokler.contact@gmail.com>"]
 [dependencies]
 structopt = "0.1.6"
 structopt-derive = "0.1.6"
+itertools = "0.7.4"
