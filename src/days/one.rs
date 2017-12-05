@@ -1,14 +1,18 @@
 use std::str::FromStr;
 
-pub fn run(input: &str, puzzle: u8) -> String {
+pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     match puzzle {
-        1 => first(input),
-        2 => second(input),
+        1 => first(input, debug),
+        2 => second(input, debug),
         _ => String::from("There are only 2 puzzles per day"),
     }
 }
 
-fn first(input: &str) -> String {
+fn first(input: &str, debug: bool) -> String {
+    if debug {
+        println!("No debug output for this puzzle");
+    }
+
     let mut result: u32 = 0;
     let mut previous = input.chars().last().expect("Where are the numbers?");
 
@@ -23,7 +27,11 @@ fn first(input: &str) -> String {
     result.to_string()
 }
 
-fn second(input: &str) -> String {
+fn second(input: &str, debug: bool) -> String {
+    if debug {
+        println!("No debug output for this puzzle");
+    }
+
     let mut result: u32 = 0;
     let cs = input.chars().collect::<Vec<_>>();
     let n = cs.len();

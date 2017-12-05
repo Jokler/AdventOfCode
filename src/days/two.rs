@@ -2,15 +2,19 @@ use std::str::FromStr;
 use std::u32;
 use itertools::Itertools;
 
-pub fn run(input: &str, puzzle: u8) -> String {
+pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     match puzzle {
-        1 => first(input),
-        2 => second(input),
+        1 => first(input, debug),
+        2 => second(input, debug),
         _ => String::from("There are only 2 puzzles per day"),
     }
 }
 
-fn first(input: &str) -> String {
+fn first(input: &str, debug: bool) -> String {
+    if debug {
+        println!("No debug output for this puzzle");
+    }
+
     let mut result: u32 = 0;
     let rows = input.split("\n").collect::<Vec<_>>();
 
@@ -28,7 +32,11 @@ fn first(input: &str) -> String {
     result.to_string()
 }
 
-fn second(input: &str) -> String {
+fn second(input: &str, debug: bool) -> String {
+    if debug {
+        println!("No debug output for this puzzle");
+    }
+
     let mut result: u32 = 0;
     let rows = input.split("\n").collect::<Vec<_>>();
 

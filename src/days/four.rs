@@ -11,7 +11,6 @@ pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
 }
 
 fn first(input: &str, debug: bool) -> String {
-
     if debug {
         println!("No debug output for this puzzle");
     }
@@ -39,7 +38,6 @@ fn sort(s: &str) -> String {
 }
 
 fn second(input: &str, debug: bool) -> String {
-
     if debug {
         println!("No debug output for this puzzle");
     }
