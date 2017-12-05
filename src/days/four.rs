@@ -1,5 +1,3 @@
-use std::u32;
-
 use itertools::Itertools;
 
 pub fn run(input: &str, puzzle: u8, debug: bool) -> String {

@@ -1,7 +1,5 @@
 use std::str::FromStr;
 
-use itertools::Itertools;
-
 pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     match puzzle {
         1 => first(input, debug),
@@ -24,14 +22,14 @@ fn first(input: &str, debug: bool) -> String {
         .collect::<Vec<_>>();
 
     let mut cur: i32 = 0;
-    let mut offset = 0;
     loop {
         if 0 > cur || cur as usize >= nums.len() {
             break;
         }
-        let old = offset;
-        offset = nums[cur as usize];
+
+        let offset = nums[cur as usize];
         nums[cur as usize] = offset + 1;
+
         cur += offset;
         result += 1;
     }
