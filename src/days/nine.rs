@@ -15,34 +15,17 @@ fn first(input: &str, debug: bool) -> String {
     let mut result = 0;
     let mut indent = 0;
     let mut garbage = false;
-    let mut escaped = false;
 
-    for c in input.chars() {
-        if garbage {
-            if escaped {
-                escaped = false;
-            } else {
-                match c {
-                    '!' => escaped = true,
-                    '>' => garbage = false,
-                    _ => (),
-                }
-            }
-        } else {
-            if escaped {
-                escaped = false;
-            } else {
-                match c {
-                    '{' => {
-                        indent +=1;
-                        result += indent;
-                    }
-                    '}' => indent -= 1,
-                    '!' => escaped = true,
-                    '<' => garbage = true,
-                    _ => (),
-                }
-            }
+    let mut chars = input.chars();
+    while let Some(c) = chars.next() {
+        match c {
+            '!' => {chars.next();}
+            '>' => garbage = false,
+            _ if garbage => (),
+            '<' => garbage = true,
+            '{' => {indent += 1; result += indent;}
+            '}' => indent -= 1,
+            _ => (),
         }
     }
 
@@ -56,29 +39,15 @@ fn second(input: &str, debug: bool) -> String {
 
     let mut result = 0;
     let mut garbage = false;
-    let mut escaped = false;
 
-    for c in input.chars() {
-        if garbage {
-            if escaped {
-                escaped = false;
-            } else {
-                match c {
-                    '!' => escaped = true,
-                    '>' => garbage = false,
-                    _ => result += 1,
-                }
-            }
-        } else {
-            if escaped {
-                escaped = false;
-            } else {
-                match c {
-                    '!' => escaped = true,
-                    '<' => garbage = true,
-                    _ => (),
-                }
-            }
+    let mut chars = input.chars();
+    while let Some(c) = chars.next() {
+        match c {
+            '!' => {chars.next();}
+            '>' => garbage = false,
+            _ if garbage => result += 1,
+            '<' => garbage = true,
+            _ => (),
         }
     }
 
