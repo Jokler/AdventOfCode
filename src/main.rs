@@ -31,9 +31,11 @@ fn main() {
 
     let input = match opt.input {
         Some(v) => v,
-        None => match opt.input_file {
-            Some(v) => read_file(v),
-            None => panic!("No input specified!"),
+        None => {
+            match opt.input_file {
+                Some(v) => read_file(v),
+                None => panic!("No input specified!"),
+            }
         }
     };
 
@@ -47,7 +49,8 @@ fn main() {
         7 => seven::run(&input, opt.puzzle, opt.debug),
         8 => eight::run(&input, opt.puzzle, opt.debug),
         9 => nine::run(&input, opt.puzzle, opt.debug),
-        _ => String::from(format!("There is no code for day {}.", opt.day))
+        17 => seventeen::run(&input, opt.puzzle, opt.debug),
+        _ => String::from(format!("There is no code for day {}.", opt.day)),
     };
 
     match opt.output_file {
@@ -76,7 +79,7 @@ fn write_file<P: AsRef<Path>>(path: P, output: String) {
     let mut file = File::create(path).expect("Failed to create to file");
 
     match file.write_all(&output.into_bytes()) {
-        Ok(_) => {},
+        Ok(_) => (),
         Err(e) => println!("Failed to write to file ({})", e),
     }
 }
