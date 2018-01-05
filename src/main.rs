@@ -76,10 +76,6 @@ fn write_file<P: AsRef<Path>>(path: P, output: String) {
     use std::fs::File;
     use std::io::prelude::*;
 
-    let mut file = File::create(path).expect("Failed to create to file");
-
-    match file.write_all(&output.into_bytes()) {
-        Ok(_) => (),
-        Err(e) => println!("Failed to write to file ({})", e),
-    }
+    let mut file = File::create(path).expect("Failed to create file");
+    file.write_all(&output.into_bytes()).expect("Failed to write to file");
 }
