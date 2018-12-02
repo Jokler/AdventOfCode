@@ -6,8 +6,7 @@ extern crate itertools;
 use structopt::StructOpt;
 use std::path::Path;
 
-mod days;
-use days::*;
+mod seventeen;
 
 #[derive(StructOpt, Debug)]
 #[structopt(name = "adventofcode", about = "Advent of Code in Rust", author = "Jokler")]
@@ -40,16 +39,16 @@ fn main() {
     };
 
     let output = match opt.day {
-        1 => one::run(&input, opt.puzzle, opt.debug),
-        2 => two::run(&input, opt.puzzle, opt.debug),
-        3 => three::run(&input, opt.puzzle, opt.debug),
-        4 => four::run(&input, opt.puzzle, opt.debug),
-        5 => five::run(&input, opt.puzzle, opt.debug),
-        6 => six::run(&input, opt.puzzle, opt.debug),
-        7 => seven::run(&input, opt.puzzle, opt.debug),
-        8 => eight::run(&input, opt.puzzle, opt.debug),
-        9 => nine::run(&input, opt.puzzle, opt.debug),
-        17 => seventeen::run(&input, opt.puzzle, opt.debug),
+        1 => seventeen::one::run(&input, opt.puzzle, opt.debug),
+        2 => seventeen::two::run(&input, opt.puzzle, opt.debug),
+        3 => seventeen::three::run(&input, opt.puzzle, opt.debug),
+        4 => seventeen::four::run(&input, opt.puzzle, opt.debug),
+        5 => seventeen::five::run(&input, opt.puzzle, opt.debug),
+        6 => seventeen::six::run(&input, opt.puzzle, opt.debug),
+        7 => seventeen::seven::run(&input, opt.puzzle, opt.debug),
+        8 => seventeen::eight::run(&input, opt.puzzle, opt.debug),
+        9 => seventeen::nine::run(&input, opt.puzzle, opt.debug),
+        17 => seventeen::seventeen::run(&input, opt.puzzle, opt.debug),
         _ => String::from(format!("There is no code for day {}.", opt.day)),
     };
 
