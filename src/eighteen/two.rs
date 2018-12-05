@@ -51,35 +51,30 @@ fn second(input: &str, debug: bool) -> String {
         println!("No debug output for this puzzle");
     }
 
-    let lines = input
+    input
         .split_whitespace()
-        .tuple_combinations::<(&str, &str)>()
-        .map(|(a, b)| (a, b.chars().collect::<Vec<_>>()))
-        .collect::<Vec<_>>();
+        .tuple_combinations::<(_, _)>()
+        .find(|(a, b)| is_solution(a, b))
+        .map(|(first, second)| {
+            first
+                .chars()
+                .zip(second.chars())
+                .filter(|(a, b)| a == b)
+                .map(|(c, _)| c)
+                .collect::<String>()
+        })
+        .unwrap()
+}
 
-    let mut result = String::new();
-
-    for (a, b) in lines {
-        let mut diff = 0;
-        for (i, c) in a.chars().enumerate() {
-            if c != b[i] {
-                diff += 1;
-                if diff > 1 {
-                    break;
-                }
+fn is_solution(first: &str, second: &str) -> bool {
+    let mut found_wrong = false;
+    for (a, b) in first.chars().zip(second.chars()) {
+        if a != b {
+            if found_wrong {
+                return false;
             }
-        }
-
-        if diff == 1 {
-            for (i, c) in a.chars().enumerate() {
-                if c == b[i] {
-                    result.push(c);
-                }
-            }
-
-            break;
+            found_wrong = true;
         }
     }
-
-    result
+    true
 }
