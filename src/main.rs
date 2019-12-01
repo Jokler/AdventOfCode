@@ -4,6 +4,7 @@ use structopt_derive::StructOpt;
 
 mod seventeen;
 mod eighteen;
+mod nineteen;
 
 #[derive(StructOpt, Debug)]
 #[structopt(
@@ -60,6 +61,10 @@ fn main() {
         2018 => match opt.day {
             1 => eighteen::one::run(&input, opt.puzzle, opt.debug),
             2 => eighteen::two::run(&input, opt.puzzle, opt.debug),
+            _ => String::from(format!("There is no code for day {}.", opt.day)),
+        },
+        2019 => match opt.day {
+            1 => nineteen::one::run(&input, opt.puzzle, opt.debug),
             _ => String::from(format!("There is no code for day {}.", opt.day)),
         },
         _ => String::from(format!("There is no code for year {}.", opt.year)),
