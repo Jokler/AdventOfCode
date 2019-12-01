@@ -13,7 +13,8 @@ fn first(input: &str, debug: bool) -> String {
         println!("No debug output for this puzzle");
     }
 
-    input.split_whitespace()
+    input
+        .split_whitespace()
         .map(|n| i32::from_str(n).unwrap())
         .map(|i| fuel(i))
         .sum::<i32>()
@@ -21,11 +22,13 @@ fn first(input: &str, debug: bool) -> String {
 }
 
 fn second(input: &str, debug: bool) -> String {
-    input.split_whitespace()
+    input
+        .split_whitespace()
         .map(|n| i32::from_str(n).unwrap())
         .map(|i| fuel(i))
         .map(|i| i + extra_fuel(i, debug))
-        .sum::<i32>().to_string()
+        .sum::<i32>()
+        .to_string()
 }
 
 fn fuel(mass: i32) -> i32 {
