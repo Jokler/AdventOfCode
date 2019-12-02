@@ -1,6 +1,6 @@
-use std::str::FromStr;
-use std::convert::TryFrom;
 use itertools::Itertools;
+use std::convert::TryFrom;
+use std::str::FromStr;
 
 pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     match puzzle {
@@ -36,7 +36,7 @@ fn second(input: &str, debug: bool) -> String {
         .collect::<Vec<_>>();
 
     let mut result = 0;
-    
+
     for (noun, verb) in (0..99).tuple_combinations::<(_, _)>() {
         memory[1] = noun;
         memory[2] = verb;
@@ -59,7 +59,7 @@ fn run_machine(mut memory: Vec<u32>) -> u32 {
         let op2 = memory[pos + 2] as usize;
         let target = memory[pos + 3] as usize;
 
-        match Opcode::try_from(memory[pos]).unwrap() {
+        match Opcode::try_from(opcode).unwrap() {
             Opcode::Add => memory[target] = memory[op1] + memory[op2],
             Opcode::Multiply => memory[target] = memory[op1] * memory[op2],
             Opcode::Halt => return memory[0],
