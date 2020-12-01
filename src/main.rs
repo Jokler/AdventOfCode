@@ -2,9 +2,10 @@ use std::path::Path;
 use structopt::StructOpt; // trait
 use structopt_derive::StructOpt;
 
-mod seventeen;
 mod eighteen;
 mod nineteen;
+mod seventeen;
+mod twenty;
 
 #[derive(StructOpt, Debug)]
 #[structopt(
@@ -65,6 +66,10 @@ fn main() {
         },
         2019 => match opt.day {
             1 => nineteen::one::run(&input, opt.puzzle, opt.debug),
+            _ => String::from(format!("There is no code for day {}.", opt.day)),
+        },
+        2020 => match opt.day {
+            1 => twenty::one::run(&input, opt.puzzle, opt.debug),
             _ => String::from(format!("There is no code for day {}.", opt.day)),
         },
         _ => String::from(format!("There is no code for year {}.", opt.year)),
