@@ -1,0 +1,18 @@
+WHITESPACE = _{ (" " | NEWLINE) }
+COMMENT = _{ cid }
+
+year = { ASCII_DIGIT{4} }
+inches = { ASCII_DIGIT{2} ~ "in" }
+cm = { ASCII_DIGIT{3} ~ "cm" }
+hex_char = _{ 'a' .. 'f' | ASCII_DIGIT }
+
+byr = { "byr:" ~ year }
+iyr = { "iyr:" ~ year }
+eyr = { "eyr:" ~ year }
+hgt = { "hgt:" ~ (cm | inches) }
+hcl = _{ "hcl:#" ~ hex_char{6} } 
+ecl = _{ "ecl:" ~ ("amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth") }
+pid = _{ "pid:" ~ ASCII_DIGIT{9} }
+cid = _{ "cid:" ~ ASCII_DIGIT* }
+
+advent = { SOI ~ (byr | iyr | eyr | hgt | hcl | ecl | pid){7} ~ EOI }
