@@ -17,14 +17,10 @@ fn first(input: &str, debug: bool) -> String {
 
     let is_valid = |v: &&str| VALID_FIELDS.contains(&&v[..3]);
 
-    let mut count = 0;
-    for passport in input.split("\n\n") {
-        if passport.split_whitespace().filter(is_valid).count() == 7 {
-            count += 1;
-        }
-    }
-
-    count.to_string()
+    input
+        .split("\n\n")
+        .map(|p| passport.split_whitespace().filter(is_valid).count() == 7)
+        .count().to_string()
 }
 
 use pest::Parser;
