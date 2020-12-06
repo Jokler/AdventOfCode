@@ -19,6 +19,17 @@ fn first(input: &str, debug: bool) -> String {
         .to_string()
 }
 
+fn second(input: &str, debug: bool) -> String {
+    input
+        .lines()
+        .map(|l| l.split(": "))
+        .map(|mut i| (i.next().unwrap(), i.next().unwrap()))
+        .map(|(pol, pass)| is_valid(pol, pass, false, debug))
+        .filter(|&v| v)
+        .count()
+        .to_string()
+}
+
 fn is_valid(policy: &str, password: &str, old: bool, debug: bool) -> bool {
     let end = policy.len() - 2;
     let bounds = &policy[..end];
@@ -41,19 +52,8 @@ fn is_valid(policy: &str, password: &str, old: bool, debug: bool) -> bool {
     }
 }
 
-fn second(input: &str, debug: bool) -> String {
-    input
-        .lines()
-        .map(|l| l.split(": "))
-        .map(|mut i| (i.next().unwrap(), i.next().unwrap()))
-        .map(|(pol, pass)| is_valid(pol, pass, false, debug))
-        .filter(|&v| v)
-        .count()
-        .to_string()
-}
-
 fn old_policy(lower: i32, upper: i32, letter: char, password: &str) -> bool {
-    let count = password.chars().filter(|c| c == letter).count();
+    let count = password.chars().filter(|&c| c == letter).count() as i32;
 
     count >= lower && count <= upper
 }
