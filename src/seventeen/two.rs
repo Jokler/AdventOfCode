@@ -1,5 +1,5 @@
-use std::str::FromStr;
 use itertools::Itertools;
+use std::str::FromStr;
 
 pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     match puzzle {
@@ -18,7 +18,8 @@ fn first(input: &str, debug: bool) -> String {
     let rows = input.split("\n").collect::<Vec<_>>();
 
     for row in rows {
-        let nums = row.split_whitespace()
+        let nums = row
+            .split_whitespace()
             .map(|x| u32::from_str(x).unwrap())
             .collect::<Vec<_>>();
 
@@ -40,11 +41,13 @@ fn second(input: &str, debug: bool) -> String {
     let rows = input.split("\n").collect::<Vec<_>>();
 
     for row in rows {
-        let nums = row.split_whitespace()
+        let nums = row
+            .split_whitespace()
             .map(|x| u32::from_str(x).unwrap())
             .collect::<Vec<_>>();
 
-        result += nums.iter()
+        result += nums
+            .iter()
             .tuple_combinations()
             .map(|(a, b)| (a.max(b), a.min(b)))
             .filter(|&(a, b)| a % b == 0)

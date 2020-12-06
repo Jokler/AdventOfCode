@@ -1,4 +1,3 @@
-
 pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     match puzzle {
         1 => first(input, debug),
@@ -19,11 +18,16 @@ fn first(input: &str, debug: bool) -> String {
     let mut chars = input.chars();
     while let Some(c) = chars.next() {
         match c {
-            '!' => {chars.next();}
+            '!' => {
+                chars.next();
+            }
             '>' => garbage = false,
             _ if garbage => (),
             '<' => garbage = true,
-            '{' => {indent += 1; result += indent;}
+            '{' => {
+                indent += 1;
+                result += indent;
+            }
             '}' => indent -= 1,
             _ => (),
         }
@@ -43,7 +47,9 @@ fn second(input: &str, debug: bool) -> String {
     let mut chars = input.chars();
     while let Some(c) = chars.next() {
         match c {
-            '!' => {chars.next();}
+            '!' => {
+                chars.next();
+            }
             '>' => garbage = false,
             _ if garbage => result += 1,
             '<' => garbage = true,

@@ -1,5 +1,5 @@
-use std::str::FromStr;
 use std::collections::HashMap;
+use std::str::FromStr;
 
 pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     match puzzle {
@@ -96,7 +96,8 @@ fn second(input: &str, debug: bool) -> String {
             .iter()
             .max_by(|a, b| a.1.cmp(b.1))
             .unwrap()
-            .1.max(&max)
+            .1
+            .max(&max)
     }
 
     max.to_string()

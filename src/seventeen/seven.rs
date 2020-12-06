@@ -1,6 +1,6 @@
-use std::str::FromStr;
-use std::collections::HashMap;
 use itertools::Itertools;
+use std::collections::HashMap;
+use std::str::FromStr;
 
 pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     match puzzle {
@@ -49,8 +49,9 @@ impl<'a> From<&'a str> for Node {
 fn get_root(nodes: &Vec<Node>) -> &Node {
     let mut parent = nodes.iter().next().expect("Supplied nodes are empty");
     while let Some(node) = nodes
-              .iter()
-              .find(|n| n.children.iter().find(|&c| c == &parent.name) != None) {
+        .iter()
+        .find(|n| n.children.iter().find(|&c| c == &parent.name) != None)
+    {
         parent = node;
     }
 
@@ -71,7 +72,10 @@ fn first(input: &str, debug: bool) -> String {
 }
 
 fn find_child<'a>(nodes: &'a Vec<Node>, name: &str) -> &'a Node {
-    nodes.iter().find(|n| &n.name == name).expect("Missing child")
+    nodes
+        .iter()
+        .find(|n| &n.name == name)
+        .expect("Missing child")
 }
 
 fn find_error_dist(nodes: &Vec<Node>, root: Node, debug: bool) -> Result<u32, u32> {
@@ -93,7 +97,11 @@ fn find_error_dist(nodes: &Vec<Node>, root: Node, debug: bool) -> Result<u32, u3
         println!("{} ->\tdists: {:?}", name, dists);
     }
 
-    let correct = dists.iter().tuple_combinations().find(|&(a, b)| a.1 == b.1).map(|(a, _)| a.1);
+    let correct = dists
+        .iter()
+        .tuple_combinations()
+        .find(|&(a, b)| a.1 == b.1)
+        .map(|(a, _)| a.1);
 
     if let Some((a, b)) = dists.iter().tuple_combinations().find(|&(a, b)| a.1 != b.1) {
         if let Some(correct) = correct {
@@ -102,23 +110,19 @@ fn find_error_dist(nodes: &Vec<Node>, root: Node, debug: bool) -> Result<u32, u3
             if correct == a.1 {
                 let problem_child = find_child(nodes, b.0);
                 return Ok((problem_child.weight as i32 + diff) as u32);
-
             } else {
                 let problem_child = find_child(nodes, a.0);
                 return Ok((problem_child.weight as i32 - diff) as u32);
             }
-
         } else {
             panic!("Solution not deterministic");
         }
     }
 
-
     Err(dists.iter().map(|d| d.1).sum::<u32>() + root.weight)
 }
 
 fn second(input: &str, debug: bool) -> String {
-
     let mut nodes: Vec<Node> = Vec::new();
     for line in input.split("\n") {
         nodes.push(line.into());

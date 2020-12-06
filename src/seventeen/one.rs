@@ -35,7 +35,7 @@ fn second(input: &str, debug: bool) -> String {
     let mut result: u32 = 0;
     let cs = input.chars().collect::<Vec<_>>();
     let n = cs.len();
-    let half = n/2;
+    let half = n / 2;
 
     for (i, c) in cs.iter().enumerate() {
         if c == &cs[(i + half) % n] {

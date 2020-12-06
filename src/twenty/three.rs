@@ -1,5 +1,3 @@
-use std::str::FromStr;
-
 pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     match puzzle {
         1 => first(input, debug),
@@ -9,7 +7,11 @@ pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
 }
 
 fn first(input: &str, debug: bool) -> String {
-    let mut lines = input.lines().collect::<Vec<_>>();
+    if debug {
+        println!("No debug output for this puzzle");
+    }
+
+    let lines = input.lines().collect::<Vec<_>>();
     let line_len = lines[0].len();
 
     let (mut x, mut y) = (0, 0);
@@ -28,6 +30,10 @@ fn first(input: &str, debug: bool) -> String {
 }
 
 fn second(input: &str, debug: bool) -> String {
+    if debug {
+        println!("No debug output for this puzzle");
+    }
+
     let options = &[(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)];
 
     let lines = input.lines().collect::<Vec<_>>();

@@ -72,21 +72,18 @@ fn second(input: &str, debug: bool) -> String {
             if y <= -dist {
                 dir = Left;
             }
-
         } else if dir == Down {
             y += 1;
 
             if y >= dist {
                 dir = Right;
             }
-
         } else if dir == Left {
             x -= 1;
 
             if x <= -dist {
                 dir = Down;
             }
-
         } else if dir == Right {
             x += 1;
 

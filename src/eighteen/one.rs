@@ -13,7 +13,10 @@ fn first(input: &str, debug: bool) -> String {
         println!("No debug output for this puzzle");
     }
 
-    input.split_whitespace().map(|n| i32::from_str(n).unwrap()).sum::<i32>()
+    input
+        .split_whitespace()
+        .map(|n| i32::from_str(n).unwrap())
+        .sum::<i32>()
         .to_string()
 }
 
@@ -24,7 +27,8 @@ fn second(input: &str, debug: bool) -> String {
 
     let nums = input
         .split_whitespace()
-        .map(|n| i32::from_str(n).unwrap()).collect::<Vec<_>>();
+        .map(|n| i32::from_str(n).unwrap())
+        .collect::<Vec<_>>();
 
     let mut current = 0;
     let mut previous = Vec::new();

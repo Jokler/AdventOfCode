@@ -23,7 +23,8 @@ fn first(input: &str, debug: bool) -> String {
         }
         previous.push(nums.clone());
 
-        let (mut curr, max) = nums.iter()
+        let (mut curr, max) = nums
+            .iter()
             .map(|n| *n)
             .enumerate()
             .max_by(|a, b| a.1.cmp(&b.1).then(b.0.cmp(&a.0)))
@@ -69,7 +70,8 @@ fn second(input: &str, debug: bool) -> String {
         }
         previous.push(nums.clone());
 
-        let (mut curr, max) = nums.iter()
+        let (mut curr, max) = nums
+            .iter()
             .map(|n| *n)
             .enumerate()
             .max_by(|a, b| a.1.cmp(&b.1).then(b.0.cmp(&a.0)))

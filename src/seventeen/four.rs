@@ -17,10 +17,10 @@ fn first(input: &str, debug: bool) -> String {
         .split("\n")
         .filter(|line| !line.is_empty())
         .map(|line| {
-                 line.split_whitespace()
-                     .tuple_combinations()
-                     .any(|(a, b)| a == b)
-             })
+            line.split_whitespace()
+                .tuple_combinations()
+                .any(|(a, b)| a == b)
+        })
         .fold(0, |acc, invalid| if invalid { acc } else { acc + 1 });
 
     result.to_string()
@@ -44,10 +44,10 @@ fn second(input: &str, debug: bool) -> String {
         .split("\n")
         .filter(|line| !line.is_empty())
         .map(|line| {
-                 line.split_whitespace()
-                     .tuple_combinations()
-                     .any(|(a, b)| sort(a) == sort(b))
-             })
+            line.split_whitespace()
+                .tuple_combinations()
+                .any(|(a, b)| sort(a) == sort(b))
+        })
         .fold(0, |acc, invalid| if invalid { acc } else { acc + 1 });
 
     result.to_string()
