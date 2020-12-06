@@ -16,7 +16,7 @@ fn first(input: &str, debug: bool) -> String {
     input
         .split_whitespace()
         .map(|n| i32::from_str(n).unwrap())
-        .map(|module| fuel(module))
+        .map(fuel)
         .sum::<i32>()
         .to_string()
 }
@@ -25,7 +25,7 @@ fn second(input: &str, debug: bool) -> String {
     input
         .split_whitespace()
         .map(|n| i32::from_str(n).unwrap())
-        .map(|module| fuel(module))
+        .map(fuel)
         .map(|fuel| fuel + extra_fuel(fuel, debug))
         .sum::<i32>()
         .to_string()

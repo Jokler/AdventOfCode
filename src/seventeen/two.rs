@@ -15,7 +15,7 @@ fn first(input: &str, debug: bool) -> String {
     }
 
     let mut result: u32 = 0;
-    let rows = input.split("\n").collect::<Vec<_>>();
+    let rows = input.split('\n').collect::<Vec<_>>();
 
     for row in rows {
         let nums = row
@@ -38,7 +38,7 @@ fn second(input: &str, debug: bool) -> String {
     }
 
     let mut result: u32 = 0;
-    let rows = input.split("\n").collect::<Vec<_>>();
+    let rows = input.split('\n').collect::<Vec<_>>();
 
     for row in rows {
         let nums = row

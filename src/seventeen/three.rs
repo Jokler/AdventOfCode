@@ -47,7 +47,7 @@ enum Direction {
     Right,
 }
 
-fn next_val(v: &Vec<Field>, x: i32, y: i32) -> u32 {
+fn next_val(v: &[Field], x: i32, y: i32) -> u32 {
     v.iter()
         .filter(|f| f.x >= x - 1 && f.x <= x + 1)
         .filter(|f| f.y >= y - 1 && f.y <= y + 1)
@@ -94,7 +94,7 @@ fn second(input: &str, debug: bool) -> String {
         }
 
         let i = next_val(&spiral, x, y);
-        let field = Field { x: x, y: y, i: i };
+        let field = Field { x, y, i };
         spiral.push(field);
 
         if i > num {
@@ -111,7 +111,7 @@ fn second(input: &str, debug: bool) -> String {
     result.to_string()
 }
 
-fn print_spiral(spiral: &Vec<Field>) {
+fn print_spiral(spiral: &[Field]) {
     println!("Debug printing only works well for small spirals");
 
     let min = spiral

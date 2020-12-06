@@ -8,7 +8,7 @@ pub fn run(input: &str, puzzle: u8, debug: bool) -> String {
     }
 }
 
-static VALID_FIELDS: [&'static str; 7] = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
+static VALID_FIELDS: [&str; 7] = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
 
 fn first(input: &str, debug: bool) -> String {
     if debug {

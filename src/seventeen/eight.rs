@@ -67,7 +67,7 @@ fn first(input: &str, debug: bool) -> String {
 
     let mut registers = HashMap::<&str, i32>::new();
 
-    for line in input.split("\n") {
+    for line in input.split('\n') {
         let op: Operation = line.into();
         op.execute(&mut registers);
     }
@@ -88,7 +88,7 @@ fn second(input: &str, debug: bool) -> String {
     let mut registers = HashMap::<&str, i32>::new();
     let mut max = 0;
 
-    for line in input.split("\n") {
+    for line in input.split('\n') {
         let op: Operation = line.into();
         op.execute(&mut registers);
 

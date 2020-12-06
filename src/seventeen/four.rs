@@ -14,7 +14,7 @@ fn first(input: &str, debug: bool) -> String {
     }
 
     let result: u32 = input
-        .split("\n")
+        .split('\n')
         .filter(|line| !line.is_empty())
         .map(|line| {
             line.split_whitespace()
@@ -30,7 +30,7 @@ fn sort(s: &str) -> String {
     use std::iter::FromIterator;
 
     let mut v = s.chars().collect::<Vec<_>>();
-    v.sort_by(|a, b| a.cmp(b));
+    v.sort_unstable();
 
     String::from_iter(v)
 }
@@ -41,7 +41,7 @@ fn second(input: &str, debug: bool) -> String {
     }
 
     let result: u32 = input
-        .split("\n")
+        .split('\n')
         .filter(|line| !line.is_empty())
         .map(|line| {
             line.split_whitespace()

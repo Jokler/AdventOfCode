@@ -25,7 +25,7 @@ fn first(input: &str, debug: bool) -> String {
 
         let (mut curr, max) = nums
             .iter()
-            .map(|n| *n)
+            .copied()
             .enumerate()
             .max_by(|a, b| a.1.cmp(&b.1).then(b.0.cmp(&a.0)))
             .expect("Numbers?");
@@ -72,7 +72,7 @@ fn second(input: &str, debug: bool) -> String {
 
         let (mut curr, max) = nums
             .iter()
-            .map(|n| *n)
+            .copied()
             .enumerate()
             .max_by(|a, b| a.1.cmp(&b.1).then(b.0.cmp(&a.0)))
             .expect("Numbers?");

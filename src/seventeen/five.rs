@@ -16,7 +16,7 @@ fn first(input: &str, debug: bool) -> String {
     let mut result: u32 = 0;
 
     let mut nums = input
-        .split("\n")
+        .split('\n')
         .filter(|s| !s.is_empty())
         .map(|s| i32::from_str(s).unwrap())
         .collect::<Vec<_>>();
@@ -45,7 +45,7 @@ fn second(input: &str, debug: bool) -> String {
     let mut result: u32 = 0;
 
     let mut nums = input
-        .split("\n")
+        .split('\n')
         .filter(|s| !s.is_empty())
         .map(|s| i32::from_str(s).unwrap())
         .collect::<Vec<_>>();

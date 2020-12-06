@@ -40,13 +40,13 @@ impl<'a> From<&'a str> for Node {
 
         Node {
             name: String::from(name),
-            weight: weight,
-            children: children,
+            weight,
+            children,
         }
     }
 }
 
-fn get_root(nodes: &Vec<Node>) -> &Node {
+fn get_root(nodes: &[Node]) -> &Node {
     let mut parent = nodes.iter().next().expect("Supplied nodes are empty");
     while let Some(node) = nodes
         .iter()
@@ -64,21 +64,21 @@ fn first(input: &str, debug: bool) -> String {
     }
 
     let mut nodes: Vec<Node> = Vec::new();
-    for line in input.split("\n") {
+    for line in input.split('\n') {
         nodes.push(line.into());
     }
 
     get_root(&nodes).name.clone()
 }
 
-fn find_child<'a>(nodes: &'a Vec<Node>, name: &str) -> &'a Node {
+fn find_child<'a>(nodes: &'a [Node], name: &str) -> &'a Node {
     nodes
         .iter()
-        .find(|n| &n.name == name)
+        .find(|n| n.name == name)
         .expect("Missing child")
 }
 
-fn find_error_dist(nodes: &Vec<Node>, root: Node, debug: bool) -> Result<u32, u32> {
+fn find_error_dist(nodes: &[Node], root: Node, debug: bool) -> Result<u32, u32> {
     let mut dists = HashMap::new();
 
     let name = root.name;
@@ -124,7 +124,7 @@ fn find_error_dist(nodes: &Vec<Node>, root: Node, debug: bool) -> Result<u32, u3
 
 fn second(input: &str, debug: bool) -> String {
     let mut nodes: Vec<Node> = Vec::new();
-    for line in input.split("\n") {
+    for line in input.split('\n') {
         nodes.push(line.into());
     }
 

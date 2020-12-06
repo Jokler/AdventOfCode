@@ -31,7 +31,7 @@ fn second(input: &str, debug: bool) -> String {
         .map(seat_id)
         .collect::<Vec<_>>();
 
-    sorted_ids.sort();
+    sorted_ids.sort_unstable();
 
     let mut prev = 0;
     for id in sorted_ids {

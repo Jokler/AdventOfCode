@@ -57,16 +57,16 @@ fn main() {
             8 => seventeen::eight::run(&input, opt.puzzle, opt.debug),
             9 => seventeen::nine::run(&input, opt.puzzle, opt.debug),
             17 => seventeen::seventeen::run(&input, opt.puzzle, opt.debug),
-            _ => String::from(format!("There is no code for day {}.", opt.day)),
+            _ => format!("There is no code for day {}.", opt.day),
         },
         2018 => match opt.day {
             1 => eighteen::one::run(&input, opt.puzzle, opt.debug),
             2 => eighteen::two::run(&input, opt.puzzle, opt.debug),
-            _ => String::from(format!("There is no code for day {}.", opt.day)),
+            _ => format!("There is no code for day {}.", opt.day),
         },
         2019 => match opt.day {
             1 => nineteen::one::run(&input, opt.puzzle, opt.debug),
-            _ => String::from(format!("There is no code for day {}.", opt.day)),
+            _ => format!("There is no code for day {}.", opt.day),
         },
         2020 => match opt.day {
             1 => twenty::one::run(&input, opt.puzzle, opt.debug),
@@ -75,9 +75,9 @@ fn main() {
             4 => twenty::four::run(&input, opt.puzzle, opt.debug),
             5 => twenty::five::run(&input, opt.puzzle, opt.debug),
             6 => twenty::six::run(&input, opt.puzzle, opt.debug),
-            _ => String::from(format!("There is no code for day {}.", opt.day)),
+            _ => format!("There is no code for day {}.", opt.day),
         },
-        _ => String::from(format!("There is no code for year {}.", opt.year)),
+        _ => format!("There is no code for year {}.", opt.year),
     };
 
     match opt.output_file {
