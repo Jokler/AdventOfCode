@@ -74,6 +74,7 @@ fn main() {
             3 => twenty::three::run(&input, opt.puzzle, opt.debug),
             4 => twenty::four::run(&input, opt.puzzle, opt.debug),
             5 => twenty::five::run(&input, opt.puzzle, opt.debug),
+            6 => twenty::six::run(&input, opt.puzzle, opt.debug),
             _ => String::from(format!("There is no code for day {}.", opt.day)),
         },
         _ => String::from(format!("There is no code for year {}.", opt.year)),
