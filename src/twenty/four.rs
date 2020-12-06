@@ -19,8 +19,9 @@ fn first(input: &str, debug: bool) -> String {
 
     input
         .split("\n\n")
-        .map(|p| passport.split_whitespace().filter(is_valid).count() == 7)
-        .count().to_string()
+        .map(|p| p.split_whitespace().filter(is_valid).count() == 7)
+        .count()
+        .to_string()
 }
 
 use pest::Parser;
