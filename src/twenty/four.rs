@@ -19,7 +19,8 @@ fn first(input: &str, debug: bool) -> String {
 
     input
         .split("\n\n")
-        .map(|p| p.split_whitespace().filter(is_valid).count() == 7)
+        .map(|p| p.split_whitespace().filter(is_valid).count())
+        .filter(|&p| p == 7)
         .count()
         .to_string()
 }
