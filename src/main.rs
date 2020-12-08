@@ -75,6 +75,7 @@ fn main() {
             4 => twenty::four::run(&input, opt.puzzle, opt.debug),
             5 => twenty::five::run(&input, opt.puzzle, opt.debug),
             6 => twenty::six::run(&input, opt.puzzle, opt.debug),
+            8 => twenty::eight::run(&input, opt.puzzle, opt.debug),
             _ => format!("There is no code for day {}.", opt.day),
         },
         _ => format!("There is no code for year {}.", opt.year),
