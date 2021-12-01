@@ -1,2 +1,4 @@
-/target/
-**/*.rs.bk
+/rust/target/
+/rust/**/*.rs.bk
+/asm/**/*.o
+/asm/aoc
