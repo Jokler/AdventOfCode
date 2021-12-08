@@ -71,12 +71,12 @@ impl std::fmt::Display for Bingo {
                     false => " ",
                 };
                 if value < &10 {
-                    print!(" {}{} ", prefix, value);
+                    write!(f, " {}{} ", prefix, value)?;
                 } else {
-                    print!("{}{} ", prefix, value);
+                    write!(f, "{}{} ", prefix, value)?;
                 }
             }
-            println!();
+            writeln!(f)?;
         }
 
         Ok(())
@@ -100,11 +100,6 @@ impl Bingo {
         }
 
         None
-    }
-
-    fn bingo(&self) -> bool {
-        (0..5).into_iter().any(|r| self.check_row(r))
-            || (0..5).into_iter().any(|c| self.check_column(c))
     }
 
     fn check_row(&self, row: usize) -> bool {
