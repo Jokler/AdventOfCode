@@ -82,6 +82,7 @@ fn main() {
         },
         2021 => match opt.day {
             2 => twentyone::two::run(&input, opt.puzzle, opt.debug),
+            4 => twentyone::four::run(&input, opt.puzzle, opt.debug),
             _ => format!("There is no code for day {}.", opt.day),
         },
         _ => format!("There is no code for year {}.", opt.year),
