@@ -13,10 +13,7 @@ fn first(input: &str, debug: bool) -> String {
         println!("No debug output for this puzzle");
     }
 
-    let full_move = input
-        .lines()
-        .map(Move::from)
-        .sum::<Move>();
+    let full_move = input.lines().map(Move::from).sum::<Move>();
 
     (full_move.forward * full_move.down).to_string()
 }
@@ -26,18 +23,19 @@ fn second(input: &str, debug: bool) -> String {
         println!("No debug output for this puzzle");
     }
 
-    let (pos, _) = input
-        .lines()
-        .map(Move::from)
-        .fold((Position::default(), 0), |(mut pos, mut aim), mov| {
-            aim += mov.down;
-            if mov.forward > 0 {
-                pos.y += mov.forward;
-                pos.x += aim * mov.forward;
-            }
+    let (pos, _) =
+        input
+            .lines()
+            .map(Move::from)
+            .fold((Position::default(), 0), |(mut pos, mut aim), mov| {
+                aim += mov.down;
+                if mov.forward > 0 {
+                    pos.y += mov.forward;
+                    pos.x += aim * mov.forward;
+                }
 
-            (pos, aim)
-    });
+                (pos, aim)
+            });
 
     (pos.x * pos.y).to_string()
 }
@@ -67,10 +65,7 @@ impl From<&str> for Move {
             _ => panic!("not a valid direction: {}", dir),
         };
 
-        Move {
-            forward,
-            down,
-        }
+        Move { forward, down }
     }
 }
 
@@ -86,10 +81,7 @@ impl std::ops::Add for Move {
 }
 
 impl std::iter::Sum for Move {
-    fn sum<I: Iterator<Item=Self>>(iter: I) -> Self {
-        iter.fold(
-            Move::default(),
-            |a, b| a + b,
-        )
+    fn sum<I: Iterator<Item = Self>>(iter: I) -> Self {
+        iter.fold(Move::default(), |a, b| a + b)
     }
 }
