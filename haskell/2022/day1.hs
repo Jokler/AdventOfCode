@@ -8,13 +8,13 @@ main = do
     print . part2 . parse $ content
 
 part1 :: [[Int]] -> Int
-part1 xs = maximum (map sum xs)
+part1 = maximum . map sum
 
 part2 :: [[Int]] -> Int
-part2 xs = sum . take 3 $ sortBy (flip compare) (map sum xs)
+part2 xs = sum . take 3 $ sortBy (flip compare) . map sum $ xs
 
 parse :: String -> [[Int]]
-parse s = map (map read) (splitList (lines s))
+parse s = map (map read) . splitList . lines $ s
 
 splitList :: [String] -> [[String]]
 splitList s = case dropWhile (== "") s of
