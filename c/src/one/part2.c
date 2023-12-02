@@ -5,6 +5,16 @@
 #include <time.h>
 
 const char* numbers[] = {
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+
     "one",
     "two",
     "three",
@@ -17,6 +27,16 @@ const char* numbers[] = {
 };
 
 const int number_lens[] = {
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+
     3,
     3,
     5,
@@ -31,7 +51,7 @@ const int number_lens[] = {
 int starting_number(char* str) {
     for (int i = 0; i < 9; i++) {
         if (strncmp(numbers[i], str, number_lens[i]) == 0) {
-            return i + 1;
+            return i % 9 + 1;
         }
     }
 
@@ -56,19 +76,12 @@ int main(void)
         int first = -1;
         int last = -1;
         for (int i = 0; line[i] != 0; i++) {
-            if (line[i] >= '0' && line[i] <= '9') {
+            int found = starting_number(&line[i]);
+            if (found != -1) {
                 if (first == -1) {
-                    first = line[i] - '0';
+                    first = found;
                 }
-                last = line[i] - '0';
-            } else {
-                int found = starting_number(&line[i]);
-                if (found != -1) {
-                    if (first == -1) {
-                        first = found;
-                    }
-                    last = found;
-                }
+                last = found;
             }
         }
         if (first != -1) {
